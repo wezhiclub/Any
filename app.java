@@ -1,5 +1,3 @@
-package any;
-
 import java.lang;
 
 
