@@ -1,4 +1,5 @@
 .gradle/
+.gitignore/
 .idea/
 *.iml
 *.ipr
