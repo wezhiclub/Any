@@ -1,0 +1,54 @@
+# 英卡车队业务
+
+## Statistics
+车队分析
+
+### Fleet.prototype.StaDispatchTimesG*(fleetId,tm_start,tm_end,isChart);
+Generator方法.统计车队中对车辆的出车次数
+fleetId:车队的id.
+tm_start:开始时间
+tm_end:结束时间.
+isChart:为true，查询前五条数据；为false,查询全部数据
+return : 一个Fleet对象
+```javascript
+co(function*(){
+    var fleetCtx = req.incar.fleet;
+    var statisticsData  = yield fleetCtx.StaDispatchTimesG(199,"2015-04-01","2015-04-07",true);
+    res.json({status:'ok',statisticsData:statisticsData});
+}).catch(function(ex){
+    res.status(500).send(ex.stack);
+});
+```
+
+### Fleet.prototype.StaDispatchTimesCountG*(fleetId,tm_start,tm_end);
+Generator方法.统计车队中对全部车辆的出车次数
+fleetId:车队的id.
+tm_start:开始时间
+tm_end:结束时间.
+return : 一个车辆全部出车次数
+```javascript
+co(function*(){
+    var fleetCtx = req.incar.fleet;
+    var statisticsData  = yield fleetCtx.StaDispatchTimesCountG(199,"2015-04-01","2015-04-07");
+    res.json({status:'ok',statisticsData:statisticsData});
+}).catch(function(ex){
+    res.status(500).send(ex.stack);
+});
+```
+
+### Fleet.prototype.StaStaffDispatchTimesG*(fleetId,tm_start,tm_end,isChart);
+Generator方法.统计车队中对车辆的出车总次数
+fleetId:车队的id.
+tm_start:开始时间
+tm_end:结束时间.
+isChart:为true，查询前五条数据；为false,查询全部数据
+return : 一个车辆出车总次数
+```javascript
+co(function*(){
+    var fleetCtx = req.incar.fleet;
+    var statisticsData  = yield fleetCtx.StaStaffDispatchTimesG(199,"2015-04-01","2015-04-07",true);
+    res.json({status:'ok',statisticsData:statisticsData});
+}).catch(function(ex){
+    res.status(500).send(ex.stack);
+});
+```
