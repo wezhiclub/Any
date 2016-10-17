@@ -901,11 +901,11 @@
 另请注意，微信公众号接口只支持80接口。
 
 ## 1.3 公众号接口示例
-#### 如何创建自定义菜单
+### 1.3.1 自定义菜单
 自定义菜单能够帮助公众号丰富界面，让用户更好更快地理解公众号的功能。开启自定义菜单后，公众号界面如图所示：
 ![img_menu](https://cloud.githubusercontent.com/assets/13936823/19382922/d42f3522-9234-11e6-8140-6f5bdc297f2f.PNG)
 
-##### 请注意：
+#### 请注意：
 
 1、自定义菜单最多包括3个一级菜单，每个一级菜单最多包含5个二级菜单。
 2、一级菜单最多4个汉字，二级菜单最多7个汉字，多出来的部分将会以“...”代替。
@@ -934,13 +934,13 @@
 ##### 10、view_limited：跳转图文消息URL
 用户点击view_limited类型按钮后，微信客户端将打开开发者在按钮中填写的永久素材id对应的图文消息URL，永久素材类型只支持图文消息。请注意：永久素材id必须是在“素材管理/新增永久素材”接口上传后获得的合法id。
 
-##### 接口调用请求说明
+### 1.3.2 接口调用请求说明
 
 http请求方式：POST（请使用https协议）
 
 http请求：https://api.weixin.qq.com/cgi-bin/menu/create?access_token=ACCESS_TOKEN
 
-##### 参数说明
+#### 参数说明
 <table>
     <tr>
         <td>参数</td>
@@ -983,6 +983,127 @@ http请求：https://api.weixin.qq.com/cgi-bin/menu/create?access_token=ACCESS_T
         <td>调用新增永久素材接口返回的合法media_id</td>
     </tr>
 </table>
+
+#### 返回结果
+
+正确时的返回JSON数据包：
+{"errcode":0,"errmsg":"ok"}
+
+错误时的返回JSON数据包（示例为无效菜单名长度）：
+{"errcode":40018,"errmsg":"invalid button name size"}
+
+其它错误请参考1.2节：公众号接口返回码
+
+### 1.3.3 本项目中的运作方式
+#### 菜单配置的存储
+菜单配置存储于数据库`t_4s_wx_menu`表中(表结构定义位于：`\mysql\20150109\20141001A_WeChat_Menu.sql`),表结构脚本如下:
+```
+CREATE TABLE IF NOT EXISTS t_4s_wx_menu(
+    s4_id INT UNSIGNED NOT NULL COMMENT '4s店id',
+    sn TINYINT UNSIGNED NOT NULL COMMENT '按16进制解析,如0x13表示第1个主菜单里的第3个子菜单',
+    wx_type VARCHAR(32) COMMENT '微信菜单的响应动作类型 类型:click,view,scancode_push,scancode_waitmsg...,详情参考微信文档',
+    wx_name VARCHAR(16) NOT NULL COMMENT '菜单标题,1级菜单至多4个汉字,2级菜单至多7个汉字',
+    wx_key VARCHAR(128) COMMENT 'click类型菜单需要,最多128字节',
+    wx_url VARCHAR(256) COMMENT 'view类型菜单需要,最多256字节',
+    banner_img VARCHAR(256) COMMENT '定义菜单响应消息最顶部的一个图片URL,最多256字节',
+    max_news TINYINT UNSIGNED DEFAULT '2' COMMENT '最多可附带显示的资讯信息的数量,默认为2',
+    max_acts TINYINT UNSIGNED DEFAULT '2' COMMENT '最可多附带显示的活动信息的数量,默认为2',
+    remark VARCHAR(256) COMMENT '备注说明',
+    status TINYINT UNSIGNED DEFAULT '1' COMMENT '0禁用 1启用(默认值) 2仅DEV环境启用',
+    PRIMARY KEY(s4_id, sn)
+);
+```
+#### 菜单的注册
+##### 1.`/web/package.json`项目依赖
+项目启动后，程序会自动执行`\web\package.json`文件中的项目依赖，执行到`"start": "node server.js"`时，开始读取`\web\server.js`中的项目配置
+```
+{
+  "name": "incar-website",
+  "version": "1.0.1",
+  "description": "InCar HTTP Website and Service API Server",
+  "private": true,
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+  ...
+```
+##### 2.`/web/server.js`项目配置
+程序执行到`server.js`文件中的`app.get('delayedInitializer')()`后开始对微信公众号的配置项进行初始化
+```
+app.get('delayedInitializer')();
+
+// Expose app
+exports = module.exports = app;
+```
+##### 3.`/web/config/express.js`微信公众号初始化
+`express.js`文件将初始化程序`delayedInitializer`指向了`promiseSrv.delayedInitializer`
+```
+    app.set('delayedInitializer', promiseSrv.delayedInitializer);
+
+    app.use('/wservice/manual', multiPart({keepExtensions: true, uploadDir: './data/manual', limit:10*1024*1024}));
+    app.use('/wservice/upload', multiPart({keepExtensions: true, uploadDir: './data/upload', limit:10*1024*1024}));
+```
+同时`express.js`文件中定义了`promiseSrv`文件路径
+```
+var promiseSrv = require('../srv/promiseSrv');
+```
+##### 4.`/web/srv/promiseSrv.js`执行初始化
+`promiseSrv.js`文件由`/web/srv/promiseSrv`文件夹中的TypeScript文件编译而成，编译定义请查看`/web/gulpfile.js`文件对应代码：
+```
+...
+gulp.task('ts-promiseSrv', ()=>{
+    var tsResult = tsProjPromiseSrv.src()
+        .pipe(newer('srv/promiseSrv.js'))
+        .pipe(sourcemaps.init())
+        .pipe(debug({ title: 'ts: ' }))
+        .pipe(ts(tsProjPromiseSrv));
+    return tsResult.js
+        .pipe(sourcemaps.write('.', { sourceRoot: 'promiseSrv' }))
+        .pipe(gulp.dest('srv/'))
+        .pipe(debug({ title: 'out: ' }));
+});
+...
+```
+`promiseSrv.delayedInitializer`方法的原始定义位于`/web/srv/promiseSrv/PromiseSrv.ts`文件中:
+```
+    // delayedInitializer
+    export function delayedInitializer(){
+        process.nextTick(()=>{
+            PromiseSrv.registerWeiXinMenus().done(
+                ()=>{ log(3, "注册微信菜单结束!"); },
+                (ex)=>{
+                    log(1, "注册微信菜单失败:");
+                    log(1, ex);
+                }
+            );
+        });
+    }
+```
+从以上程序可以看出`PromiseSrv.ts`中的`delayedInitializer()`方法调用了`PromiseSrv.registerWeiXinMenus()`方法
+`PromiseSrv.registerWeiXinMenus()`方法的原始定义位于`/web/srv/promiseSrv/WeChat.ts`文件中:
+```
+...
+module PromiseSrv {
+    // 注册微信菜单
+    export function registerWeiXinMenus(){
+        if(process.env.INCAR_REG_WXMENU == 'true' || process.env.NODE_ENV !== 'development'){
+            return S4.Inner_GetS4().then((ss:Array<S4>)=>{
+                var waitAll = [];
+                ss.forEach((s4)=>{
+                    waitAll.push(s4.registerWeChatMenu());
+                });
+                return Promise.all(waitAll);
+            });
+        }
+        else {
+            log(2, "development环境默认不启用微信菜单注册,除非定义了INCAR_REG_WXMENU=true");
+            return Promise.resolve(0);
+        }
+    }
+    ...
+```
+`registerWeiXinMenus()`方法通过读取数据库中的配置，并调用微信自定义菜单接口，对微信菜单进行初始化
 
 # 2.JS功能介绍
 ## activityDetailService.js
@@ -1039,6 +1160,7 @@ http请求：https://api.weixin.qq.com/cgi-bin/menu/create?access_token=ACCESS_T
 </table>
 
 ## applyService.js
+功能：报名参加活动
 <table>
     <tr>
         <td>方法名</td>
