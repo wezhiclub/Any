@@ -1065,13 +1065,13 @@ gulp.task('ts-promiseSrv', ()=>{
 });
 ...
 ```
-`promiseSrv.delayedInitializer`之后的程序流程图:
+###### `promiseSrv.delayedInitializer`之后的程序流程图:
 ![incar_platform](https://cloud.githubusercontent.com/assets/13936823/19470875/c23edcec-9553-11e6-863c-a809abdd20a8.png)
 
 
 # 2.JS功能介绍
 ## activityDetailService.js
-功能：获取活动信息
+### 功能：获取活动信息
 <table>
     <tr>
         <td>方法名</td>
@@ -1124,7 +1124,7 @@ gulp.task('ts-promiseSrv', ()=>{
 </table>
 
 ## applyService.js
-功能：报名参加活动
+### 功能：报名参加活动
 <table>
     <tr>
         <td>方法名</td>
@@ -1163,3 +1163,9 @@ gulp.task('ts-promiseSrv', ()=>{
         <td>供applyData方法调用</td>
     </tr>
 </table>
+
+## behaviorService.js
+### 功能：获取驾驶习惯数据
+
+## brandService.js
+### 功能：获取品牌信息
