@@ -1065,45 +1065,9 @@ gulp.task('ts-promiseSrv', ()=>{
 });
 ...
 ```
-`promiseSrv.delayedInitializer`方法的原始定义位于`/web/srv/promiseSrv/PromiseSrv.ts`文件中:
-```
-    // delayedInitializer
-    export function delayedInitializer(){
-        process.nextTick(()=>{
-            PromiseSrv.registerWeiXinMenus().done(
-                ()=>{ log(3, "注册微信菜单结束!"); },
-                (ex)=>{
-                    log(1, "注册微信菜单失败:");
-                    log(1, ex);
-                }
-            );
-        });
-    }
-```
-从以上程序可以看出`PromiseSrv.ts`中的`delayedInitializer()`方法调用了`PromiseSrv.registerWeiXinMenus()`方法
-`PromiseSrv.registerWeiXinMenus()`方法的原始定义位于`/web/srv/promiseSrv/WeChat.ts`文件中:
-```
-...
-module PromiseSrv {
-    // 注册微信菜单
-    export function registerWeiXinMenus(){
-        if(process.env.INCAR_REG_WXMENU == 'true' || process.env.NODE_ENV !== 'development'){
-            return S4.Inner_GetS4().then((ss:Array<S4>)=>{
-                var waitAll = [];
-                ss.forEach((s4)=>{
-                    waitAll.push(s4.registerWeChatMenu());
-                });
-                return Promise.all(waitAll);
-            });
-        }
-        else {
-            log(2, "development环境默认不启用微信菜单注册,除非定义了INCAR_REG_WXMENU=true");
-            return Promise.resolve(0);
-        }
-    }
-    ...
-```
-`registerWeiXinMenus()`方法通过读取数据库中的配置，并调用微信自定义菜单接口，对微信菜单进行初始化
+`promiseSrv.delayedInitializer`之后的程序流程图:
+![incar_platform](https://cloud.githubusercontent.com/assets/13936823/19470875/c23edcec-9553-11e6-863c-a809abdd20a8.png)
+
 
 # 2.JS功能介绍
 ## activityDetailService.js
