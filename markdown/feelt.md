@@ -4,7 +4,7 @@
 + JS 文件位置：packages/fleet/html/scripts/mainView.js
 + index.html主要代码介绍：
 
-```javascript
+```html
             <div ng-repeat=" fun in funList">
                 <div ng-class="fun.funClass" >
                     <div class="col-xs-10 g-h-120 g-padding-lr0 g-margin-l27 {{fun.funLine}} g-line-a2 text-center g-left-nav-style{{fun.funFlag}}">
@@ -49,7 +49,7 @@ requirejs(['./fleet','jquery', './icBaiduMap','./icBaiduMapTrack','./myCurrentTi
 + HTML文件位置: packages/fleet/html/views/vehicle/index.html		
 + JS文件位置:packages/fleet/html/scripts/vehicleControl.js
 + index.html主要代码介绍:
-```javascripts
+```html
         <!--展示类型-->
         <div class="g-w-30 g-float-l" ng-click="changeView('list');"><img src="/{{pathname}}/styles/images/ico-j{{templateId == 'listView'?2:1}}.png" width="30" height="30"></div>
         <div class="g-w-30 g-float-l g-padding-l15" ng-click="changeView('map');"><img src="/{{pathname}}/styles/images/ico-k{{templateId == 'mapView'?2:1}}.png" width="30" height="30"></div>
@@ -78,8 +78,8 @@ requirejs(['./fleet','jquery', './icBaiduMap','./icBaiduMapTrack','./myCurrentTi
         var apiYearMileage = $resource('/'+pathname+'/api/fleet/:fleetId/vehicle/:vehicleId/yearMileage');  //年里程统计
 
 ```
- 定义API的请求路径以及请求方式，在车辆管理中通过发送这些请求并根据返回的数据实现车辆管理中各个功能。
  
+ 定义API的请求路径以及请求方式，在车辆管理中通过发送这些请求并根据返回的数据实现车辆管理中各个功能。
 ## 3.司机管理		
 + HTML文件位置：packages/fleet/html/views/staff/index.html  
 + JS 文件位置：packages/fleet/html/scripts/staffControl.js
