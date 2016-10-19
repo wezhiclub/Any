@@ -1,4 +1,4 @@
-# 平台PC网页网站
+# 一、平台PC网页网站
 平台PC网页网站用于后台管理员与4S店对客户的管理。
 
 
@@ -159,7 +159,7 @@ $routeProvider.
 ```	
 	
 	
-# 4S客户管理页面路由(/wsite/js/fun_js/S_indexController.js)
+# 二、4S客户管理页面路由(/wsite/js/fun_js/S_indexController.js)
 ```javascript
 $routeProvider.
             when('/4sStore/:s4_id/index', {
