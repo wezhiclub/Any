@@ -1071,7 +1071,7 @@ gulp.task('ts-promiseSrv', ()=>{
 
 # 2.JS功能介绍
 ## activityDetailService.js
-### 功能：获取活动信息
+### 获取活动信息
 <table>
     <tr>
         <td>方法名</td>
@@ -1124,7 +1124,7 @@ gulp.task('ts-promiseSrv', ()=>{
 </table>
 
 ## applyService.js
-### 功能：报名参加活动
+#### 报名参加活动
 <table>
     <tr>
         <td>方法名</td>
@@ -1165,7 +1165,94 @@ gulp.task('ts-promiseSrv', ()=>{
 </table>
 
 ## behaviorService.js
-### 功能：获取驾驶习惯数据
+#### 获取驾驶习惯数据
 
 ## brandService.js
-### 功能：获取品牌信息
+#### 获取品牌信息
+
+## cancelOthersBookService.js
+#### 取消维修预约
+
+## cancelSlotBookingService.js
+#### 取消预约
+
+## cancelTrialrunService.js
+#### 取消试驾预约
+
+## carbonService.js
+#### 获取碳排放量信息
+
+## carTypeService.js
+#### 获取车型信息
+
+## driveRecordService.js
+#### 查询行驶数据
+
+## fuelService.js
+### 获取油耗信息
+
+## getOpenidService.js
+#### 获取OpenID
+
+## graphicCountService.js
+#### 保存访问统计信息
+
+## haoserviceAPI.js
+#### 违章查询
+
+## infoConfigService.js
+#### 获取车辆相关信息
+
+## lampService.js
+#### 获取故障指示灯信息
+
+## matchResultService.js
+#### 获取4S店活动信息
+
+## mservice.js
+#### service配置
+
+## my4sInfoService.js
+#### 查询车主所在4S店相关信息
+
+## myActivityService.js
+#### 查询车主参加的活动信息
+
+## myBookingService.js
+##### 查询车主的预约信息
+
+## myCareService.js
+##### 查询车主的保养信息
+
+## myDriveService.js
+##### 查询车主的驾驶信息
+
+## myOthersBookingService.js
+#### 查询车主的其它预约信息
+
+## myTrialrunService.js
+#### 查询车主的试驾预约信息
+
+## nodegrass.js
+#### 配置
+
+## othersbookingService.js
+#### 维修预约
+
+## seriesService.js
+#### 查询车系信息
+
+## slotBookingService.js
+#### 保养预约
+
+## sopenidService.js
+#### 查询服务号相关信息
+
+## trialrunService.js
+#### 试驾预约
+
+## userService.js
+#### 获取用户相关信息
+
+## weatherService.js
+#### 获取天气信息
