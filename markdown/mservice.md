@@ -1068,6 +1068,8 @@ gulp.task('ts-promiseSrv', ()=>{
 ###### `promiseSrv.delayedInitializer`之后的程序流程图:
 ![incar_platform](https://cloud.githubusercontent.com/assets/13936823/19470875/c23edcec-9553-11e6-863c-a809abdd20a8.png)
 
+### 1.3.2 微信公众平台开发者文档
+#### 微信公众平台其它功能请查阅开发者文档：https://mp.weixin.qq.com/wiki/home/index.html
 
 # 2.JS功能介绍
 ## activityDetailService.js
