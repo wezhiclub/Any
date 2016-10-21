@@ -102,7 +102,7 @@ $('#btn-trace').click(() => {
 + 主要功能：在车辆模块中可以查看车队中的所有车辆以及车辆详情，并有添加，删除，修改车辆信息的功能，在车辆详情页面中可以查看车辆的行车记录和改车辆的二维码。
 
 ## 3.司机
-![img_menu](https://github.com/Liujingguo91year/AAA/blob/master/image/%E5%8F%B8%E6%9C%BA.PNG)
+![img_menu](https://github.com/Liujingguo91year/AAA/blob/master/image/%E5%8F%B8%E6%9C%BA01.PNG)
 + HTML文件位置：webpack/app/template/driver.html
 + JS文件位置：webpack/app/controller/driver.js
 + 主要功能:在司机模块中可以查看车队中的所有司机以及司机详情，并有添加，删除，修改司机信息，查看司机行车记录的功能，在司机详情页面中可以查看司机的出车记录。主要功能：
