@@ -97,12 +97,38 @@ $('#btn-trace').click(() => {
 ```
 车辆管理首页先将删除车辆的弹出框隐藏，在在进行删除车辆操作时js文件中通过id=“dialog_popup-vehicle“讲弹出框显现出来，点击确认删按钮开始向后台发送删除车辆请求。
 + 主要功能：在车辆模块中可以查看车队中的所有车辆以及车辆详情，并有添加，删除，修改车辆信息的功能，在车辆详情页面中可以查看车辆的行车记录和改车辆的二维码。
-## 司机
+
+## 3.司机
 + HTML文件位置：webpack/app/template/driver.html
 + JS文件位置：webpack/app/controller/driver.js
 + 主要功能:在司机模块中可以查看车队中的所有司机以及司机详情，并有添加，删除，修改司机信息，查看司机行车记录的功能，在司机详情页面中可以查看司机的出车记录。主要功能：
 
-## 地图
+## 4.地图
 + HTML文件位置: webpack/app/template/map-view.html
 + JS文件位置: webpack/app/controller/map-view.js	
 + 主要功能介绍：在地图中显示改车队中车辆的位置，点击车辆图标可以查看车辆详情，在详情页面可以修改车辆信息，查看出车记录，以及该车辆的二维码。
+
+## 5.警报
++ HTML 文件位置:	webpack/app/template/alarm.html
++ JS 文件位置: webpack/app/controller/alarm.js
++ 主要功能介绍： 在警报页面中可以根据起始时间，截止时间，车牌号，报警类型搜索报警信息。
+
+## 6.出车记录
++ HTML文件位置：webpack/app/template/dispatch.html
++ JS 文件位置: webpack/app/controller/dispatch.js
++ 主要功能：根据车牌或司机手机号查询某一时间段的出车记录，点击出车记录可查看出车详情，在出车详情页面点击查看行车记录按钮可查看行车记录详情以及行车轨迹图。
+
+## 7.设置
++ HTML文件位置：webpack/app/template/settings.html
++ JS 文件位置: webpack/app/controller/settings.js
++ 主要功能：在报警微信消息中可设置向微信发送警报的消息类型，洪水位严重警报，黄色为一般警报。在警报短信中可设置向手机发送警报的消息类型。在推送消息部分可设置消息推送的打开或者关闭。
+
+## 8.账户
++ HTML文件位置：webpack/app/template/account.html
++ JS 文件位置: webpack/app/controller/account.js
++ 主要功能：更新账户资料，修改密码，重置密码，解绑微信
+
+## 9.统计
++ HTML文件位置：webpack/app/template/stat.html
++ JS 文件位置: webpack/app/controller/stat.js
++ 主要功能：可以根据统计类型，统计唯独查询在某一时间段内的统计数据。
