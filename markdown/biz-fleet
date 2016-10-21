@@ -2,7 +2,8 @@
 
 ## Statistics
 车队分析
-
+Fleet 
+代表车队
 ### Fleet.prototype.StaDispatchTimesG*(fleetId,tm_start,tm_end,isChart);
 Generator方法.统计车队中对车辆的出车次数
 fleetId:车队的id.
@@ -52,3 +53,49 @@ co(function*(){
     res.status(500).send(ex.stack);
 });
 ```
+
+/**************************************************************
+新增的
+Fleet.prototype.getAllTripG* (filter, pageSize, nextMarker)
+Generator方法获取所有的行程
+Filter ： 过滤条件如{ name: /s/i, biz_mode: 1 }, 代表返回所有name包含s(不区分大小写)且biz_mode等于1的对象. 如果过滤条件里是一个正则表达式,那么把属性转换为字符串,做字符串匹配; 如果过滤条件里不是正则表达式,那么直接比较值是否相等匹配.
+Pagesize:分页大小，默认不分页，返回全部
+nextMarker: 可选.填入上下页返回的第一个org.id, 默认不填表示从第1页开始返回.
+
+Fleet.prototype.getDispatchTeamsG*(filter, pageSize , nextMark)
+Generator 按时间顺序查询派遣小队，支持分页 
+Return : 一个车队对象
+
+
+Fleet.prototype.getAllTripCountG*(filter);
+获取行程数据
+Filter:过滤条件
+Return 查询里程数
+
+Fleet.prototype.StadispatchTimesG(fleetId , tm_start , tm_end , isChart)
+统计出车次数
+fleetedId 车队ID
+tm_start 开始时间
+tm_end 结束时间
+isChart为true，查询前五条数据；为false,查询全部数据
+
+
+DispatchTeam
+是一个派遣小队
+DispatchTeam.FromJson
+从一个JSON对象创建一个DispatchTeam对象
+Src：一个JSON对象，包含一组dispatcheTeam属性
+Return：新的dispatchTeam对象
+
+
+DispatchTeam.FromIdG*(fleetId, teamId) 
+通过车队ID和小队ID查询指定的派遣小队
+FleetId：车队ID
+TeamId： 小队ID
+Dispatheam.prototype.Add*(staff , vehicle)
+向小队中追加司机和车辆、
+Staff:代表一名雇员
+Vechicle： 车辆对象
+
+DispatchTeam.prototype.deleteG*()
+删除派遣小队
