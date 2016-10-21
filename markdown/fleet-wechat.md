@@ -106,12 +106,12 @@ $('#btn-trace').click(() => {
 ## 4.地图
 + HTML文件位置: webpack/app/template/map-view.html
 + JS文件位置: webpack/app/controller/map-view.js	
-+ 主要功能介绍：在地图中显示改车队中车辆的位置，点击车辆图标可以查看车辆详情，在详情页面可以修改车辆信息，查看出车记录，以及该车辆的二维码。
++ 主要功能：在地图中显示改车队中车辆的位置，点击车辆图标可以查看车辆详情，在详情页面可以修改车辆信息，查看出车记录，以及该车辆的二维码。
 
 ## 5.警报
 + HTML 文件位置:	webpack/app/template/alarm.html
 + JS 文件位置: webpack/app/controller/alarm.js
-+ 主要功能介绍： 在警报页面中可以根据起始时间，截止时间，车牌号，报警类型搜索报警信息。
++ 主要功能： 在警报页面中可以根据起始时间，截止时间，车牌号，报警类型搜索报警信息。
 
 ## 6.出车记录
 + HTML文件位置：webpack/app/template/dispatch.html
