@@ -1,5 +1,7 @@
 # 小型车队微信介绍
 ## 1.首页
+![img_menu](https://github.com/Liujingguo91year/AAA/blob/master/image/photo1.png)
+
 +	HTML 文件位置:  webpack/app/template/home.html
 +	JS文件位置:  webpack/app/controller/home.js
 + HTML文件主要代码介绍：
@@ -79,6 +81,7 @@ $('#btn-trace').click(() => {
 + 主要功能：可以在车队管理首页用，通过输入车牌号点击车辆跟踪按钮查看改车辆的行车轨迹，点击模块按钮跳转到相应页面。  
 
 ## 2.车辆
+![img_menu](https://github.com/Liujingguo91year/AAA/blob/master/image/%E8%BD%A6%E8%BE%86.PNG)
 + HTML页面位置：webpack/app/template/vehicle.html
 + JS页面位置: webpack/app/controller/vehicle.js
 + HTML代码介绍：
@@ -99,6 +102,7 @@ $('#btn-trace').click(() => {
 + 主要功能：在车辆模块中可以查看车队中的所有车辆以及车辆详情，并有添加，删除，修改车辆信息的功能，在车辆详情页面中可以查看车辆的行车记录和改车辆的二维码。
 
 ## 3.司机
+![img_menu](https://github.com/Liujingguo91year/AAA/blob/master/image/%E5%8F%B8%E6%9C%BA.PNG)
 + HTML文件位置：webpack/app/template/driver.html
 + JS文件位置：webpack/app/controller/driver.js
 + 主要功能:在司机模块中可以查看车队中的所有司机以及司机详情，并有添加，删除，修改司机信息，查看司机行车记录的功能，在司机详情页面中可以查看司机的出车记录。主要功能：
@@ -109,6 +113,7 @@ $('#btn-trace').click(() => {
 + 主要功能：在地图中显示改车队中车辆的位置，点击车辆图标可以查看车辆详情，在详情页面可以修改车辆信息，查看出车记录，以及该车辆的二维码。
 
 ## 5.警报
+![img_menu](https://github.com/Liujingguo91year/AAA/blob/master/image/%E8%AD%A6%E6%8A%A5.PNG)
 + HTML 文件位置:	webpack/app/template/alarm.html
 + JS 文件位置: webpack/app/controller/alarm.js
 + 主要功能： 在警报页面中可以根据起始时间，截止时间，车牌号，报警类型搜索报警信息。
