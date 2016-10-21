@@ -900,8 +900,8 @@
 
 另请注意，微信公众号接口只支持80接口。
 
-## 1.3 公众号接口示例
-### 1.3.1 自定义菜单
+## 1.4 公众号接口示例
+### 1.4.1 自定义菜单
 自定义菜单能够帮助公众号丰富界面，让用户更好更快地理解公众号的功能。开启自定义菜单后，公众号界面如图所示：
 ![img_menu](https://cloud.githubusercontent.com/assets/13936823/19382922/d42f3522-9234-11e6-8140-6f5bdc297f2f.PNG)
 
@@ -934,7 +934,7 @@
 ##### 10、view_limited：跳转图文消息URL
 用户点击view_limited类型按钮后，微信客户端将打开开发者在按钮中填写的永久素材id对应的图文消息URL，永久素材类型只支持图文消息。请注意：永久素材id必须是在“素材管理/新增永久素材”接口上传后获得的合法id。
 
-### 1.3.2 接口调用请求说明
+### 1.4.2 接口调用请求说明
 
 http请求方式：POST（请使用https协议）
 
@@ -994,7 +994,7 @@ http请求：https://api.weixin.qq.com/cgi-bin/menu/create?access_token=ACCESS_T
 
 其它错误请参考1.2节：公众号接口返回码
 
-### 1.3.3 本项目中的运作方式
+### 1.4.3 本项目中的运作方式
 #### 菜单配置的存储
 菜单配置存储于数据库`t_4s_wx_menu`表中(表结构定义位于：`\mysql\20150109\20141001A_WeChat_Menu.sql`),表结构脚本如下:
 ```
@@ -1068,7 +1068,7 @@ gulp.task('ts-promiseSrv', ()=>{
 ###### `promiseSrv.delayedInitializer`之后的程序流程图:
 ![incar_platform](https://cloud.githubusercontent.com/assets/13936823/19470875/c23edcec-9553-11e6-863c-a809abdd20a8.png)
 
-### 1.3.2 微信公众平台开发者文档
+## 1.5 微信公众平台开发者文档
 #### 微信公众平台其它功能请查阅开发者文档：https://mp.weixin.qq.com/wiki/home/index.html
 
 # 2.JS功能介绍
