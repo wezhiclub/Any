@@ -3,7 +3,7 @@
 ## 包名：@incar/carFactory
 广本试驾车管理。
 
-
+ 
 
 ## 车厂管理 ` CarFactoryAPI.js`
 
@@ -29,3 +29,39 @@
 * CarFactoryAPI.prototype.getAllVehicles 查看整车厂一个城市的所有车辆
 * CarFactoryAPI.exportExcel 导出Excel
 * CarFactoryAPI.transferAlarmType 判断报警类型
+
+
+## 经销商管理 ` DealerAPI.js`
+* DealerAPI.prototype.getAllVehicles 获取试乘试驾店的所有车辆
+* DealerAPI.prototype.getAllStaffs 获取试乘试驾店的所有账号
+
+## 围栏 ` FenceAPI.js`
+* FenceAPI.prototype.get 查询围栏
+* FenceAPI.prototype.save 保存围栏
+
+
+## 员工 ` StaffAPI.js`
+* StaffAPI.prototype.get 查询员工
+* StaffAPI.prototype.update 修改员工
+* StaffAPI.prototype.remove 删除员工
+* StaffAPI.getStaffLogin   查询当前登录用户信息
+
+## 行程 ` TripAPI.js` 
+* TripAPI.prototype.get  获取单独1个行程数据
+* TripAPI.prototype.getTripPath  查询某台车的所有行程数据
+* TripAPI.prototype.getDetail 查询某台车的所有行程详情
+
+##  车辆 ` VehicleAPI.js` 
+* VehicleAPI.prototype.get 查询车辆
+* VehicleAPI.prototype.update 修改车辆
+* VehicleAPI.prototype.remove 删除车辆
+* VehicleAPI.prototype.getVehicleStatus 获取车辆状态
+* VehicleAPI.prototype.getVehiclePos 获取车辆位置
+* VehicleAPI.prototype.getTrips 查询某台车的所有行程数据
+
+
+##  权限 ` Authority.js` 
+* Authority.requireSystemAdmin 验证系统管理员
+* Authority.requireStaffOrSystemAdmin 验证系统管理员或者员工
+
+
