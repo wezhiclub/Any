@@ -1,0 +1,31 @@
+# 广本试驾车管理
+
+## 包名：@incar/carFactory
+广本试驾车管理。
+
+
+
+## 车厂管理 ` CarFactoryAPI.js`
+
+* CarFactoryAPI.getAll  查询所有经销商集团
+* CarFactoryAPI.post 增加一个试乘试驾
+* CarFactoryAPI.prototype.getAllDealers 获取所有的经销商
+* CarFactoryAPI.prototype.getTripsStatistic 获取行程统计
+* CarFactoryAPI.prototype.getTripsStatisticExcel 获取行程统计
+* CarFactoryAPI.prototype.getAllTdRecords 获取试驾记录
+* CarFactoryAPI.prototype.getAllTdAlarms 获取报警信息
+* CarFactoryAPI.prototype.getTdAlarmReport  获取报警统计报表信息
+* CarFactoryAPI.prototype.get4sRegion 获取车厂下面的大区
+* CarFactoryAPI.prototype.getAllRegion 获取所有大区
+* CarFactoryAPI.prototype.get4sProvince 获取车厂下面的省
+* CarFactoryAPI.prototype.getAllProvince 获取大区下面所有的省
+* CarFactoryAPI.prototype.get4sCity  获取车厂下面的城市
+* CarFactoryAPI.prototype.getAllCity 获取省下面所有的城市
+* CarFactoryAPI.prototype.get 获取一个试乘试驾
+* CarFactoryAPI.prototype.update 修改一个试乘试驾
+* CarFactoryAPI.prototype.getAllDevices 查找所有的设备
+* CarFactoryAPI.prototype.saveDealer 添加4S店
+* CarFactoryAPI.prototype.updateDeale 修改4S店
+* CarFactoryAPI.prototype.getAllVehicles 查看整车厂一个城市的所有车辆
+* CarFactoryAPI.exportExcel 导出Excel
+* CarFactoryAPI.transferAlarmType 判断报警类型
